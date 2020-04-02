@@ -1,10 +1,10 @@
 package net.darkhax.noaispawneggs;
 
-import net.minecraft.item.ItemSpawnEgg;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.item.SpawnEggItem;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -31,13 +31,13 @@ public class NoAISpawnEggs {
         
         final ItemStack stack = event.getItemStack();
         
-        if (stack.getItem() instanceof ItemSpawnEgg) {
+        if (stack.getItem() instanceof SpawnEggItem) {
             
-            final NBTTagCompound stackTag = stack.getChildTag("EntityTag");
+            final CompoundNBT stackTag = stack.getChildTag("EntityTag");
             
             if (stackTag != null && stackTag.getBoolean("NoAI")) {
                 
-                event.getToolTip().add(new TextComponentTranslation("itemGroup.noai").applyTextStyle(TextFormatting.GOLD));
+                event.getToolTip().add(new TranslationTextComponent("itemGroup.noai").applyTextStyle(TextFormatting.GOLD));
             }
         }
     }

@@ -1,14 +1,11 @@
 package net.darkhax.noaispawneggs;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemSpawnEgg;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.item.Items;
+import net.minecraft.item.SpawnEggItem;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -32,15 +29,12 @@ public class ItemGroupNoAI extends ItemGroup {
     @OnlyIn(Dist.CLIENT)
     public void fill (NonNullList<ItemStack> items) {
         
-        for (final Item item : ItemSpawnEgg.getEggs()) {
+        for (final Item item : SpawnEggItem.getEggs()) {
             
-            if (item instanceof ItemSpawnEgg) {
-                
-                final ItemStack stack = new ItemStack(item);
-                final NBTTagCompound entityTag = stack.getOrCreateChildTag("EntityTag");
-                entityTag.putBoolean("NoAI", true);
-                items.add(stack);
-            }
+            final ItemStack stack = new ItemStack(item);
+            final CompoundNBT entityTag = stack.getOrCreateChildTag("EntityTag");
+            entityTag.putBoolean("NoAI", true);
+            items.add(stack);
         }
     }
     
