@@ -8,23 +8,19 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 
 @Mod("noaispawneggs")
 public class NoAISpawnEggs {
     
     public NoAISpawnEggs() {
         
-        DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient));
-    }
-    
-    private void setupClient (FMLClientSetupEvent event) {
-        
-        MinecraftForge.EVENT_BUS.addListener(this::handleTooltips);
-        new ItemGroupNoAI();
+    	if (FMLEnvironment.dist == Dist.CLIENT) {
+    		
+            MinecraftForge.EVENT_BUS.addListener(this::handleTooltips);
+            new ItemGroupNoAI();
+    	}
     }
     
     private void handleTooltips (ItemTooltipEvent event) {
@@ -37,7 +33,7 @@ public class NoAISpawnEggs {
             
             if (stackTag != null && stackTag.getBoolean("NoAI")) {
                 
-                event.getToolTip().add(new TranslationTextComponent("itemGroup.noai").applyTextStyle(TextFormatting.GOLD));
+                event.getToolTip().add(new TranslationTextComponent("itemGroup.noai").func_240699_a_(TextFormatting.GOLD));
             }
         }
     }
