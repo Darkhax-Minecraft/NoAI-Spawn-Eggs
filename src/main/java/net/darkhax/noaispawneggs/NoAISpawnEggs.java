@@ -33,7 +33,7 @@ public class NoAISpawnEggs {
             
             if (stackTag != null && stackTag.getBoolean("NoAI")) {
                 
-                event.getToolTip().add(new TranslationTextComponent("itemGroup.noai").func_240699_a_(TextFormatting.GOLD));
+                event.getToolTip().add(new TranslationTextComponent("itemGroup.noai").mergeStyle(TextFormatting.GOLD));
             }
         }
     }
