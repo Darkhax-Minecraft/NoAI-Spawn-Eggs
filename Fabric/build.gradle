@@ -19,6 +19,7 @@ dependencies {
     modImplementation "me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"
     modImplementation "curse.maven:lovely-snails-499425:3546566"
 
+    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":Common")
 }
 
