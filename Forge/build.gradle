@@ -62,9 +62,9 @@ minecraft {
 dependencies {
 
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation fg.deobf("mezz.jei:jei-1.18.1:${jei_version}")
+    implementation fg.deobf("mezz.jei:jei-1.18.2:${jei_version}")
     implementation fg.deobf("curse.maven:catalogue-459701:${catalogue_version}")
-    implementation fg.deobf("curse.maven:waddles-251767:3547986")
+    implementation fg.deobf("curse.maven:waddles-251767:${waddles_version}")
     compileOnly project(":Common")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
