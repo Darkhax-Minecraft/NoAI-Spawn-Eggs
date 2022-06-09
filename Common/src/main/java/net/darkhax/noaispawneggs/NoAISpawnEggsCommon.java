@@ -4,7 +4,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -24,7 +23,7 @@ public class NoAISpawnEggsCommon {
 
             if (stackTag != null && stackTag.getBoolean("NoAI")) {
 
-                tooltip.add(new TranslatableComponent("itemGroup.noaispawneggs.egg_tab").withStyle(ChatFormatting.GOLD));
+                tooltip.add(Component.translatable("itemGroup.noaispawneggs.egg_tab").withStyle(ChatFormatting.GOLD));
             }
         }
     }
