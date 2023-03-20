@@ -2,10 +2,11 @@ package net.darkhax.noaispawneggs;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.minecraft.core.Registry;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Items;
 
 public class NoAISpawnEggsFabric implements ClientModInitializer {
@@ -13,10 +14,11 @@ public class NoAISpawnEggsFabric implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
-        final FabricItemGroupBuilder tabBuilder = FabricItemGroupBuilder.create(new ResourceLocation(Constants.MOD_ID, "egg_tab"));
-        tabBuilder.icon(() -> new ItemStack(Items.COW_SPAWN_EGG));
-        tabBuilder.appendItems(NoAISpawnEggsCommon.populateDisplayStacks(Registry.ITEM));
-        tabBuilder.build();
+        CreativeModeTab.Builder builder = FabricItemGroup.builder(new ResourceLocation(Constants.MOD_ID, "tab"));
+        builder.title(Component.translatable("itemGroup.noaispawneggs.egg_tab"));
+        builder.icon(() -> Items.PIG_SPAWN_EGG.getDefaultInstance());
+        builder.displayItems((params, output) -> NoAISpawnEggsCommon.populateDisplayStacks(BuiltInRegistries.ITEM, output::accept));
+        builder.build();
 
         ItemTooltipCallback.EVENT.register(NoAISpawnEggsCommon::onItemTooltip);
     }
