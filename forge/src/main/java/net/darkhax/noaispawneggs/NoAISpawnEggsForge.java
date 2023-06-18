@@ -1,11 +1,12 @@
 package net.darkhax.noaispawneggs;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.IExtensionPoint;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -14,6 +15,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.forgespi.Environment;
 import net.minecraftforge.network.NetworkConstants;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegisterEvent;
 
 @Mod(Constants.MOD_ID)
 public class NoAISpawnEggsForge {
@@ -33,11 +35,18 @@ public class NoAISpawnEggsForge {
         NoAISpawnEggsCommon.onItemTooltip(event.getItemStack(), event.getFlags(), event.getToolTip());
     }
 
-    private void createItemTabs(CreativeModeTabEvent.Register event) {
-        event.registerCreativeModeTab(new ResourceLocation(Constants.MOD_ID, "tab"), builder -> {
-            builder.title(Component.translatable("itemGroup.noaispawneggs.egg_tab"));
-            builder.icon(() -> Items.PIG_SPAWN_EGG.getDefaultInstance());
-            builder.displayItems((params, output) -> NoAISpawnEggsCommon.populateDisplayStacks(ForgeRegistries.ITEMS, output::accept));
-        });
+    private void createItemTabs(RegisterEvent event) {
+
+        if (event.getRegistryKey() == Registries.CREATIVE_MODE_TAB) {
+
+            event.register(Registries.CREATIVE_MODE_TAB, new ResourceLocation(Constants.MOD_ID, "tab"), () -> {
+
+                final CreativeModeTab.Builder builder = CreativeModeTab.builder();
+                builder.title(Component.translatable("itemGroup.noaispawneggs.egg_tab"));
+                builder.icon(() -> Items.PIG_SPAWN_EGG.getDefaultInstance());
+                builder.displayItems((params, output) -> NoAISpawnEggsCommon.populateDisplayStacks(ForgeRegistries.ITEMS, output::accept));
+                return builder.build();
+            });
+        }
     }
 }
