@@ -1,5 +1,6 @@
 package net.darkhax.noaispawneggs;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -12,7 +13,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
-import net.neoforged.neoforge.registries.ForgeRegistries;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import net.neoforged.neoforgespi.Environment;
 
@@ -43,7 +43,7 @@ public class NoAiSpawnEggsNeoForge {
                 final CreativeModeTab.Builder builder = CreativeModeTab.builder();
                 builder.title(Component.translatable("itemGroup.noaispawneggs.egg_tab"));
                 builder.icon(() -> Items.PIG_SPAWN_EGG.getDefaultInstance());
-                builder.displayItems((params, output) -> NoAISpawnEggsCommon.populateDisplayStacks(ForgeRegistries.ITEMS, output::accept));
+                builder.displayItems((params, output) -> NoAISpawnEggsCommon.populateDisplayStacks(BuiltInRegistries.ITEM, output::accept));
                 return builder.build();
             });
         }
