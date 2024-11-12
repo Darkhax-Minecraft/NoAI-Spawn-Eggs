@@ -1,3 +1,4 @@
 {
-  "itemGroup.noaispawneggs.egg_tab": "No AI"
+  "itemGroup.noaispawneggs.egg_tab": "No AI",
+  "item.name.noaispawneggs": "%s - %s"
 }
