@@ -1,0 +1,23 @@
+{
+  "mod": {
+    "name": "NoAISpawnEggs",
+    "group": "net.darkhax.noaispawneggs",
+    "authors": [
+      "Darkhax"
+    ],
+    "id": "noaispawneggs",
+    "license": "LGPL 2.1",
+    "description": "Spawn mobs quickly with no AI!",
+    "repo": "https://github.com/Darkhax-Minecraft/NoAI-Spawn-Eggs",
+    "client": false
+  },
+  "dependencies": [],
+  "curseforge": {
+    "slug": "no-ai-spawn-eggs",
+    "id": "304495"
+  },
+  "modrinth": {
+    "slug": "no-ai-spawn-eggs",
+    "id": "VOUckZSf"
+  }
+}

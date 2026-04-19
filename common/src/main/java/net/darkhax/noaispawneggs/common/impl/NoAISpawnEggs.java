@@ -3,12 +3,14 @@ package net.darkhax.noaispawneggs.common.impl;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.component.TypedEntityData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,12 +28,15 @@ public class NoAISpawnEggs {
         for (Item item : BuiltInRegistries.ITEM) {
             if (item instanceof SpawnEggItem spawnEgg) {
                 final ItemStack eggStack = spawnEgg.getDefaultInstance().copy();
-                CustomData.update(DataComponents.ENTITY_DATA, eggStack, tag -> {
-                    tag.putString("id", BuiltInRegistries.ENTITY_TYPE.getKey(spawnEgg.getType(eggStack)).toString());
-                    tag.putBoolean("NoAI", true);
-                });
-                eggStack.set(DataComponents.ITEM_NAME, Component.translatable("item.name.noaispawneggs", eggStack.getHoverName(), TOOLTIP));
-                adder.accept(eggStack);
+                final TypedEntityData<EntityType<?>> rawSpawnData = eggStack.get(DataComponents.ENTITY_DATA);
+                if (rawSpawnData != null) {
+                    final CompoundTag noAiData = rawSpawnData.copyTagWithoutId();
+                    noAiData.putString("id", BuiltInRegistries.ENTITY_TYPE.getKey(rawSpawnData.type()).toString());
+                    noAiData.putBoolean("NoAI", true);
+                    eggStack.set(DataComponents.ITEM_NAME, Component.translatable("item.name.noaispawneggs", eggStack.getHoverName(), TOOLTIP));
+                    eggStack.set(DataComponents.ENTITY_DATA, TypedEntityData.of(rawSpawnData.type(), noAiData));
+                    adder.accept(eggStack);
+                }
             }
         }
     }
