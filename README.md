@@ -1,5 +1,5 @@
 <!-- name-start -->
-# NoAISpawnEggs [![CurseForge Project](https://img.shields.io/curseforge/dt/304495?logo=curseforge&label=CurseForge&style=flat-square&labelColor=2D2D2D&color=555555)](https://www.curseforge.com/minecraft/mc-mods/no-ai-spawn-eggs) [![Modrinth Project](https://img.shields.io/modrinth/dt/VOUckZSf?logo=modrinth&label=Modrinth&style=flat-square&labelColor=2D2D2D&color=555555)](https://modrinth.com/mod/no-ai-spawn-eggs) [![Maven Project](https://img.shields.io/maven-metadata/v?style=flat-square&logoColor=D31A38&labelColor=2D2D2D&color=555555&label=Latest&logo=gradle&metadataUrl=https%3A%2F%2Fmaven.blamejared.com%2Fnet%2Fdarkhax%2Fnoaispawneggs%2Fnoaispawneggs-common-26.1.2%2Fmaven-metadata.xml)](https://maven.blamejared.com/net/darkhax/noaispawneggs)
+# NoAISpawnEggs [![CurseForge Project](https://img.shields.io/curseforge/dt/304495?logo=curseforge&label=CurseForge&style=flat-square&labelColor=2D2D2D&color=555555)](https://www.curseforge.com/minecraft/mc-mods/no-ai-spawn-eggs) [![Modrinth Project](https://img.shields.io/modrinth/dt/VOUckZSf?logo=modrinth&label=Modrinth&style=flat-square&labelColor=2D2D2D&color=555555)](https://modrinth.com/mod/no-ai-spawn-eggs) [![Maven Project](https://img.shields.io/maven-metadata/v?style=flat-square&logoColor=D31A38&labelColor=2D2D2D&color=555555&label=Latest&logo=gradle&metadataUrl=https%3A%2F%2Fmaven.blamejared.com%2Fnet%2Fdarkhax%2Fnoaispawneggs%2Fnoaispawneggs-common-26.2%2Fmaven-metadata.xml)](https://maven.blamejared.com/net/darkhax/noaispawneggs)
 <!-- name-end -->
 
 <!-- description-start -->
@@ -22,11 +22,11 @@ repositories {
 
 dependencies {
      // NeoForge
-     implementation group: 'net.darkhax.noaispawneggs', name: 'noaispawneggs-neoforge-26.1.2', version: '26.1.2.0'
+     implementation group: 'net.darkhax.noaispawneggs', name: 'noaispawneggs-neoforge-26.2', version: '26.2.0.0'
      // Fabric
-     implementation group: 'net.darkhax.noaispawneggs', name: 'noaispawneggs-fabric-26.1.2', version: '26.1.2.0'
+     implementation group: 'net.darkhax.noaispawneggs', name: 'noaispawneggs-fabric-26.2', version: '26.2.0.0'
      // Common / MultiLoader / Vanilla / No Loader
-     implementation group: 'net.darkhax.noaispawneggs', name: 'noaispawneggs-common-26.1.2', version: '26.1.2.0'
+     implementation group: 'net.darkhax.noaispawneggs', name: 'noaispawneggs-common-26.2', version: '26.2.0.0'
 }
 ```
 
