@@ -4,13 +4,12 @@ issueTrackerURL = "https://github.com/Darkhax-Minecraft/NoAI-Spawn-Eggs/issues"
 
 [[mods]]
 modId = "noaispawneggs"
-version = "26.2.0.0"
+version = "26.3.0.0"
 displayName = "NoAISpawnEggs"
-updateJSONURL = "https://updates.blamejared.com/get?n=noaispawneggs&gv=26.2&ml=neoforge"
+updateJSONURL = "https://updates.blamejared.com/get?n=noaispawneggs&gv=26.3&ml=neoforge"
 displayURL = "https://www.curseforge.com/minecraft/mc-mods/no-ai-spawn-eggs"
-logoFile = "logo_noaispawneggs.png"
-logoBlur = false
-credits = "This project is made possible with Patreon support from players like you. Thank you! lothrazar, techsquirrel, Keyana , Darkosto, Tobias Ward, noobanidus"
+iconFile = "logo_noaispawneggs.png"
+credits = "This project is made possible with Patreon support from players like you. Thank you! lothrazar, techsquirrel, Tobias Ward, noobanidus"
 authors = "Darkhax"
 description = "Spawn mobs quickly with no AI!"
 
@@ -23,14 +22,14 @@ config = "noaispawneggs.neoforge.mixins.json"
 [[dependencies.noaispawneggs]]
 modId = "minecraft"
 type = "required"
-versionRange = "26.2"
+versionRange = "26.3"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.noaispawneggs]]
 modId = "neoforge"
 type = "required"
-versionRange = "[26.2.0.1-beta,)"
+versionRange = "[26.3.0.16-beta,)"
 ordering = "NONE"
 side = "BOTH"
 
